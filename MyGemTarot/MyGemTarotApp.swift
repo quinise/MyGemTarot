@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct MyGemTarotApp: App {
+    @ObservedObject private var data = CardsObjectController()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView(cards: $data.results)
+            }.onAppear() {
+                data.getCards()
+            }
         }
     }
 }

@@ -13,21 +13,24 @@ struct ContentView: View {
     @State var isCoinsViewPresented = false
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
-        
+    
+    @Binding public var cards: [Card]
+    
     var body: some View {
         NavigationView {
             VStack {
                 Button("Major Arcana") {
                     isArcanaViewPresented = true
                 }
-                .fullScreenCover(isPresented: $isArcanaViewPresented) {
-                    ArcanaView()
-                }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
                 .foregroundColor(.white) // font color
                 .cornerRadius(8)
                 .padding()
+                .fullScreenCover(isPresented: $isArcanaViewPresented) {
+                    // provide type == "major" cards
+                    ArcanaView(cards: $cards, arcanaCard: cards[1])
+                }
                 
                 Button("Cups") {
                     isCupsViewPresented = true
@@ -86,6 +89,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView {
+            ContentView(cards: .constant(Card.data))
+        }
     }
 }
