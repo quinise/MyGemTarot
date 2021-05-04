@@ -5,6 +5,7 @@
 //  Created by Devin Ercolano on 4/30/21.
 //
 
+import Foundation
 import SwiftUI
 
 struct ArcanaView: View {
@@ -18,7 +19,7 @@ struct ArcanaView: View {
     var body: some View {
         NavigationView {
                     List {
-                        ForEach(cards, id: \.value_int, content: { card in
+                        ForEach(cards[0..<22], id: \.value_int, content: { card in
                             if card.type == "major" {
                                 Button(card.name) {
                                     arcanaCard = card
@@ -30,28 +31,23 @@ struct ArcanaView: View {
                                 .cornerRadius(8)
                                 .padding()
                                 .fullScreenCover(isPresented: $isCardViewPresented) {
-//                                    $arcanaCard = card
                                     CardView(card: arcanaCard)
                                 }
-//                                Text(card.name)
-//                                Text(card.desc)
-//                                    .foregroundColor(.primary)
-//                                    Spacer()
                             }
                             
                         })
                     }
-            .padding()
-            .navigationTitle("Major Arcana")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
+                    .padding()
+                    .navigationTitle("Major Arcana")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "arrow.left")
+                            }
+                        }
                     }
-                }
-            }
                 
         }
     }
