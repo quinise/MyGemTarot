@@ -1,10 +1,3 @@
-//
-//  WandsView.swift
-//  MyGemTarot
-//
-//  Created by Devin Ercolano on 4/30/21.
-//
-
 import Foundation
 import SwiftUI
 
@@ -14,7 +7,6 @@ struct ArcanaView: View {
     @Binding var cards: [Card]
     @State var arcanaCard: Card
     @Environment(\.presentationMode) var presentationMode
-    @Environment(\.defaultMinListRowHeight) var minRowHeight
 
     var body: some View {
         NavigationView {

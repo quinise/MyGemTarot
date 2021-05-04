@@ -36,7 +36,7 @@ struct ContentView: View {
                     isCupsViewPresented = true
                 }
                 .fullScreenCover(isPresented: $isCupsViewPresented) {
-                    CupsView()
+                    CupsView(cards: $cards, cupsCard: cards[1])
                 }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
@@ -48,7 +48,7 @@ struct ContentView: View {
                     isCoinsViewPresented = true
                 }
                 .fullScreenCover(isPresented: $isCoinsViewPresented) {
-                    CoinsView()
+                    CoinsView(cards: $cards, coinsCard: cards[1])
                 }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
@@ -60,7 +60,7 @@ struct ContentView: View {
                     isSwordsViewPresented = true
                 }
                 .fullScreenCover(isPresented: $isSwordsViewPresented) {
-                    SwordsView()
+                    SwordsView(cards: $cards, swordsCard: cards[1])
                 }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
@@ -72,7 +72,7 @@ struct ContentView: View {
                     isWandsViewPresented = true
                 }
                 .fullScreenCover(isPresented: $isWandsViewPresented) {
-                    WandsView()
+                    WandsView(cards: $cards, wandsCard: cards[1])
                 }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title

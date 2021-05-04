@@ -1,38 +1,49 @@
-//
-//  WandsView.swift
-//  MyGemTarot
-//
-//  Created by Devin Ercolano on 4/30/21.
-//
-
 import SwiftUI
 
 struct CupsView: View {
-    
+    @State var isCardViewPresented = false
+    @Binding var cards: [Card]
+    @State var cupsCard: Card
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
-            VStack {
-            Text("Hello, Cups!")
-        }
-        .padding()
-        .navigationTitle("Cups")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
+            List {
+                ForEach(cards[36..<50], id: \.value_int, content: { card in
+                    if card.suit == "cups" {
+                        Button(card.name) {
+                            cupsCard = card
+                            isCardViewPresented = true
+                        }
+                        .background(Color(UIColor.systemTeal))
+                        .font(.system(size:32)) // prefered to title
+                        .foregroundColor(.white) // font color
+                        .cornerRadius(8)
+                        .padding()
+                        .fullScreenCover(isPresented: $isCardViewPresented) {
+                            CardView(card: cupsCard)
+                        }
+                    }
+                    
+                })
+            }
+            .padding()
+            .navigationTitle("Cups")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                    }
                 }
             }
         }
-    }
+}
 }
 
-struct WandsView_Previews: PreviewProvider {
+struct CupsView_Previews: PreviewProvider {
     static var previews: some View {
-        WandsView()
+        CupsView(cards: .constant(Card.data), cupsCard: Card.data[0])
     }
-}
 }
