@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var isWandsViewPresented = false
     
     @Binding public var cards: [Card]
+    @Binding public var gems: [Gem]
+    @Binding public var readings: [Reading]
     
     var body: some View {
         NavigationView {
@@ -29,60 +31,67 @@ struct ContentView: View {
                 .padding()
                 .fullScreenCover(isPresented: $isArcanaViewPresented) {
                     // provide type == "major" cards
-                    ArcanaView(cards: $cards, arcanaCard: cards[1])
+                    ArcanaView(cards: $cards, arcanaCard: cards[0], gems: $gems, readings: $readings)
                 }
                 
                 Button("Cups") {
                     isCupsViewPresented = true
                 }
-                .fullScreenCover(isPresented: $isCupsViewPresented) {
-                    CupsView(cards: $cards, cupsCard: cards[1])
-                }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
                 .foregroundColor(.white) // font color
                 .cornerRadius(8)
                 .padding()
+                .fullScreenCover(isPresented: $isCupsViewPresented) {
+                    CupsView(cards: $cards, cupsCard: cards[1], gems: $gems, readings: $readings)
+                }
                 
                 Button("Coins") {
                     isCoinsViewPresented = true
                 }
-                .fullScreenCover(isPresented: $isCoinsViewPresented) {
-                    CoinsView(cards: $cards, coinsCard: cards[1])
-                }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
                 .foregroundColor(.white) // font color
                 .cornerRadius(8)
                 .padding()
+                .fullScreenCover(isPresented: $isCoinsViewPresented) {
+                    CoinsView(gems: $gems, cards: $cards, readings: $readings, coinsCard: cards[1])
+                }
                 
                 Button("Swords") {
                     isSwordsViewPresented = true
                 }
-                .fullScreenCover(isPresented: $isSwordsViewPresented) {
-                    SwordsView(cards: $cards, swordsCard: cards[1])
-                }
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
                 .foregroundColor(.white) // font color
                 .cornerRadius(8)
                 .padding()
+                .fullScreenCover(isPresented: $isSwordsViewPresented) {
+                    SwordsView(gems: $gems, cards: $cards, readings: $readings, swordsCard: cards[0])
+                }
                 
                 Button("Wands") {
                     isWandsViewPresented = true
                 }
-                .fullScreenCover(isPresented: $isWandsViewPresented) {
-                    WandsView(cards: $cards, wandsCard: cards[1])
-                }
+                
                 .background(Color(UIColor.systemTeal))
                 .font(.system(size:32)) // prefered to title
                 .foregroundColor(.white) // font color
                 .cornerRadius(8)
                 .padding()
-                
+                .fullScreenCover(isPresented: $isWandsViewPresented) {
+                    WandsView(gems: $gems, readings: $readings, cards: $cards, wandsCard: cards[1])
+                }
             }
             .padding()
             .navigationTitle("My Gem Tarot")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: ReadingsView(readings: $readings, saveAction: {})) {
+                        Image(systemName: "book")
+                    }
+                }
+            }
         }
     }
 }
@@ -90,7 +99,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView(cards: .constant(Card.data))
+            ContentView(cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
         }
     }
 }

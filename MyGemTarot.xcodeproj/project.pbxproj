@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		069C9B51911269A8687EA2CD /* Pods_MyGemTarot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762911DB634CABE917B204E2 /* Pods_MyGemTarot.framework */; };
+		881E7A942641DFFF0082EE79 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E7A932641DFFF0082EE79 /* Gem.swift */; };
+		881E7A962641E7F50082EE79 /* GemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E7A952641E7F50082EE79 /* GemData.swift */; };
 		88A8AB81263C9FE900DC46E4 /* MyGemTarotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */; };
 		88A8AB83263C9FE900DC46E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB82263C9FE900DC46E4 /* ContentView.swift */; };
 		88A8AB85263C9FEB00DC46E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88A8AB84263C9FEB00DC46E4 /* Assets.xcassets */; };
@@ -20,11 +22,18 @@
 		88A8AB9A263CA58000DC46E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB99263CA58000DC46E4 /* CardView.swift */; };
 		88B0237F263CCEDB00EDE7D5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0237E263CCEDB00EDE7D5 /* Card.swift */; };
 		88B02382263CD10400EDE7D5 /* CardsObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B02381263CD10400EDE7D5 /* CardsObjectController.swift */; };
+		88D8B6542642EAC8007773D2 /* ReadingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6532642EAC8007773D2 /* ReadingsView.swift */; };
+		88D8B6562642FB14007773D2 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6552642FB14007773D2 /* EditView.swift */; };
+		88D8B6582642FB87007773D2 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6572642FB87007773D2 /* ReadingView.swift */; };
+		88D8B65A26430128007773D2 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B65926430128007773D2 /* Reading.swift */; };
+		88D8B65C26430922007773D2 /* ReadingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B65B26430922007773D2 /* ReadingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6F4258A585457941F97A7FFA /* Pods-MyGemTarot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGemTarot.debug.xcconfig"; path = "Target Support Files/Pods-MyGemTarot/Pods-MyGemTarot.debug.xcconfig"; sourceTree = "<group>"; };
 		762911DB634CABE917B204E2 /* Pods_MyGemTarot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGemTarot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		881E7A932641DFFF0082EE79 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
+		881E7A952641E7F50082EE79 /* GemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemData.swift; sourceTree = "<group>"; };
 		88A8AB7D263C9FE900DC46E4 /* MyGemTarot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGemTarot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGemTarotApp.swift; sourceTree = "<group>"; };
 		88A8AB82263C9FE900DC46E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +48,11 @@
 		88A8AB99263CA58000DC46E4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		88B0237E263CCEDB00EDE7D5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		88B02381263CD10400EDE7D5 /* CardsObjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsObjectController.swift; sourceTree = "<group>"; };
+		88D8B6532642EAC8007773D2 /* ReadingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsView.swift; sourceTree = "<group>"; };
+		88D8B6552642FB14007773D2 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		88D8B6572642FB87007773D2 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
+		88D8B65926430128007773D2 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		88D8B65B26430922007773D2 /* ReadingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingData.swift; sourceTree = "<group>"; };
 		EC96308EE287D001E45FEAD2 /* Pods-MyGemTarot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGemTarot.release.xcconfig"; path = "Target Support Files/Pods-MyGemTarot/Pods-MyGemTarot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +103,9 @@
 				88A8AB82263C9FE900DC46E4 /* ContentView.swift */,
 				88A8AB8F263CA22E00DC46E4 /* ArcanaView.swift */,
 				88A8AB91263CA2BA00DC46E4 /* CupsView.swift */,
+				88D8B6552642FB14007773D2 /* EditView.swift */,
+				88D8B6532642EAC8007773D2 /* ReadingsView.swift */,
+				88D8B6572642FB87007773D2 /* ReadingView.swift */,
 				88A8AB93263CA2C900DC46E4 /* CoinsView.swift */,
 				88A8AB95263CA2EF00DC46E4 /* SwordsView.swift */,
 				88A8AB97263CA30600DC46E4 /* WandsView.swift */,
@@ -112,6 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				88B0237E263CCEDB00EDE7D5 /* Card.swift */,
+				881E7A932641DFFF0082EE79 /* Gem.swift */,
+				881E7A952641E7F50082EE79 /* GemData.swift */,
+				88D8B65926430128007773D2 /* Reading.swift */,
+				88D8B65B26430922007773D2 /* ReadingData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,11 +268,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				88A8AB83263C9FE900DC46E4 /* ContentView.swift in Sources */,
+				881E7A942641DFFF0082EE79 /* Gem.swift in Sources */,
+				88D8B65A26430128007773D2 /* Reading.swift in Sources */,
 				88B0237F263CCEDB00EDE7D5 /* Card.swift in Sources */,
 				88B02382263CD10400EDE7D5 /* CardsObjectController.swift in Sources */,
+				88D8B6562642FB14007773D2 /* EditView.swift in Sources */,
 				88A8AB98263CA30600DC46E4 /* WandsView.swift in Sources */,
+				88D8B6542642EAC8007773D2 /* ReadingsView.swift in Sources */,
 				88A8AB90263CA22E00DC46E4 /* ArcanaView.swift in Sources */,
 				88A8AB96263CA2EF00DC46E4 /* SwordsView.swift in Sources */,
+				88D8B6582642FB87007773D2 /* ReadingView.swift in Sources */,
+				881E7A962641E7F50082EE79 /* GemData.swift in Sources */,
+				88D8B65C26430922007773D2 /* ReadingData.swift in Sources */,
 				88A8AB94263CA2C900DC46E4 /* CoinsView.swift in Sources */,
 				88A8AB81263C9FE900DC46E4 /* MyGemTarotApp.swift in Sources */,
 				88A8AB9A263CA58000DC46E4 /* CardView.swift in Sources */,

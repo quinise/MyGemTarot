@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-//    @Binding var cards: [Card]
+    @Binding var gems: [Gem]
     let card: Card
     @Environment(\.presentationMode) var presentationMode
 
@@ -22,7 +22,13 @@ struct CardView: View {
                     Text(card.meaning_up)
                     Text("Reversed Meaning").font(.title)
                     Text(card.meaning_rev)
-            }
+                    ForEach(gems, id: \.id, content: { gem in
+                        if card.name == gem.card {
+                            Text(gem.name).font(.title)
+                            Text(gem.descrip)
+                        }
+                    })
+                }
             .padding()
             .navigationTitle(card.name)
             .toolbar {
@@ -44,6 +50,6 @@ struct CardView_Previews: PreviewProvider {
     // pass in card data
     static var card = Card.data[0]
     static var previews: some View {
-        CardView(card: card)
+        CardView(gems: .constant(Gem.data), card: card)
     }
 }
