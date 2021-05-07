@@ -27,7 +27,7 @@ struct Reading: Identifiable, Codable {
     }
 
     func isNotesValid() -> Bool {
-        let notesTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z0-9]{1,250}$")
+        let notesTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{1,250}$")
         return notesTest.evaluate(with: notes)
     }
     

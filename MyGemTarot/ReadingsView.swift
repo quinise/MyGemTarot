@@ -20,7 +20,7 @@ struct ReadingsView: View {
     
     var body: some View {
         List {
-            ForEach(readings[0..<(readings.count - 1)], id: \.id, content: { reading in
+            ForEach(readings[0..<(readings.count)]) { reading in
                     Button(reading.title) {
                         chosenReading = reading
                         isReadingViewPresented = true
@@ -33,8 +33,11 @@ struct ReadingsView: View {
                     .fullScreenCover(isPresented: $isReadingViewPresented) {
                         ReadingView(reading: chosenReading)
                     }
-            })
-            .onDelete(perform: delete)
+            }
+            .onDelete { indices in
+                readingData.readings.remove(atOffsets: indices)
+                // stop back from being envoked
+            }
         }
         .navigationTitle("Readings")
         .navigationBarItems(trailing: Button(action: {
@@ -53,11 +56,12 @@ struct ReadingsView: View {
                             readings.append(newReading)
                             addIsPresented = false
                             readingData.save()
-                        } else {
+                        } else if !newReading.validate {
+                            let _:Reading? = nil
                             return
                         }
-                    }
-                )}
+                    })
+                }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
