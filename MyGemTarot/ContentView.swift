@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var readingData: ReadingData
     @State var isArcanaViewPresented = false
     @State var isCupsViewPresented = false
     @State var isCoinsViewPresented = false
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
-    
+    @State var reading: Reading
     @Binding public var cards: [Card]
     @Binding public var gems: [Gem]
     @Binding public var readings: [Reading]
@@ -31,7 +32,7 @@ struct ContentView: View {
                 .padding()
                 .fullScreenCover(isPresented: $isArcanaViewPresented) {
                     // provide type == "major" cards
-                    ArcanaView(cards: $cards, arcanaCard: cards[0], gems: $gems, readings: $readings)
+                    ArcanaView(readingData: readingData, cards: $cards, arcanaCard: cards[0], reading: reading, gems: $gems, readings: $readings)
                 }
                 
                 Button("Cups") {
@@ -43,7 +44,7 @@ struct ContentView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isCupsViewPresented) {
-                    CupsView(cards: $cards, cupsCard: cards[1], gems: $gems, readings: $readings)
+                    CupsView(readingData: readingData, cards: $cards, cupsCard: cards[1], reading: reading, gems: $gems, readings: $readings)
                 }
                 
                 Button("Coins") {
@@ -55,7 +56,7 @@ struct ContentView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isCoinsViewPresented) {
-                    CoinsView(gems: $gems, cards: $cards, readings: $readings, coinsCard: cards[1])
+                    CoinsView(readingData: readingData, gems: $gems, cards: $cards, readings: $readings, coinsCard: cards[1], reading: reading)
                 }
                 
                 Button("Swords") {
@@ -67,7 +68,7 @@ struct ContentView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isSwordsViewPresented) {
-                    SwordsView(gems: $gems, cards: $cards, readings: $readings, swordsCard: cards[0])
+                    SwordsView(readingData: readingData, gems: $gems, cards: $cards, readings: $readings, swordsCard: cards[0], reading: reading)
                 }
                 
                 Button("Wands") {
@@ -80,14 +81,14 @@ struct ContentView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isWandsViewPresented) {
-                    WandsView(gems: $gems, readings: $readings, cards: $cards, wandsCard: cards[1])
+                    WandsView(readingData: readingData,gems: $gems, readings: $readings, cards: $cards, wandsCard: cards[1], reading: reading)
                 }
             }
             .padding()
             .navigationTitle("My Gem Tarot")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ReadingsView(readings: $readings, saveAction: {})) {
+                    NavigationLink(destination: ReadingsView(readingData: readingData, readings: $readings, reading: reading, chosenReading: reading, saveAction: {})) {
                         Image(systemName: "book")
                     }
                 }
@@ -97,9 +98,11 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var readingData = ReadingData()
+    @State static var reading = Reading.data[0]
     static var previews: some View {
         NavigationView {
-            ContentView(cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
+            ContentView(readingData: readingData, reading: reading, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
         }
     }
 }

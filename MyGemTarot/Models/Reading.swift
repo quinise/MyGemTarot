@@ -20,6 +20,24 @@ struct Reading: Identifiable, Codable {
         self.date = date
         self.notes = notes
     }
+    
+    func isTitleValid() -> Bool {
+        let titleTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z0-9]{1,15}$")
+        return titleTest.evaluate(with: title)
+    }
+
+    func isNotesValid() -> Bool {
+        let notesTest = NSPredicate(format: "SELF MATCHES %@", "^[a-zA-Z0-9]{1,250}$")
+        return notesTest.evaluate(with: notes)
+    }
+    
+    var validate: Bool {
+        if !isTitleValid() || !isNotesValid() {
+            return false
+        }
+        return true
+    }
+    
 }
 
 extension Reading {

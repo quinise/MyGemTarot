@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ReadingView: View {
-    @Binding var reading: Reading
-    @State private var date: Reading.Data = Reading.Data()
+    let reading: Reading
     @Environment(\.presentationMode) var presentationMode
 
 
@@ -29,6 +28,7 @@ struct ReadingView: View {
                     Text(reading.notes)
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -38,12 +38,14 @@ struct ReadingView: View {
                     }
                 }
             }
+            .navigationTitle(reading.title)
         }
     }
 }
 
 struct ReadingView_Previews: PreviewProvider {
+    static var reading = Reading.data[0]
     static var previews: some View {
-        ReadingView(reading: .constant(Reading.data[0]))
+        ReadingView(reading: reading)
     }
 }

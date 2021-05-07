@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ReadingsView: View {
+    @ObservedObject var readingData: ReadingData
     @Environment(\.scenePhase) private var scenePhase
     @Binding var readings: [Reading]
-    @State var editIsPresented = false
+    @State var reading: Reading
+    @State var chosenReading: Reading
+    @State var addIsPresented = false
     @State var isReadingViewPresented = false
     @State private var newReadingData = Reading.Data()
     let saveAction: () -> Void
     
     var body: some View {
         List {
-            ForEach(readings) { reading in
+            ForEach(readings[0..<(readings.count - 1)], id: \.id, content: { reading in
                     Button(reading.title) {
+                        chosenReading = reading
                         isReadingViewPresented = true
                     }
                     .background(Color(UIColor.systemTeal))
@@ -27,28 +31,33 @@ struct ReadingsView: View {
                     .cornerRadius(8)
                     .padding()
                     .fullScreenCover(isPresented: $isReadingViewPresented) {
-                        ReadingView(reading: binding(for: reading))
+                        ReadingView(reading: chosenReading)
                     }
-            }
+            })
             .onDelete(perform: delete)
         }
         .navigationTitle("Readings")
         .navigationBarItems(trailing: Button(action: {
-            editIsPresented = true
+            addIsPresented = true
         }) {
             Image(systemName: "plus")
         })
-        .sheet(isPresented: $editIsPresented) {
+        .sheet(isPresented: $addIsPresented) {
             NavigationView {
-                EditView(readingData: $newReadingData)
+                AddView(readingData: $newReadingData)
                     .navigationBarItems(leading: Button("Cancel") {
-                        editIsPresented = false
+                        addIsPresented = false
                     }, trailing: Button("Add") {
                         let newReading = Reading(title: newReadingData.title, date: newReadingData.date, notes: newReadingData.notes)
-                        readings.append(newReading)
-                        editIsPresented = false
-                    })
-            }
+                        if newReading.validate {
+                            readings.append(newReading)
+                            addIsPresented = false
+                            readingData.save()
+                        } else {
+                            return
+                        }
+                    }
+                )}
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
@@ -68,7 +77,9 @@ struct ReadingsView: View {
 }
 
 struct ReadingsView_Previews: PreviewProvider {
+    @State static var readingData = ReadingData()
+    @State static var reading = Reading.data[0]
     static var previews: some View {
-        ReadingsView(readings: .constant(Reading.data), saveAction: {})
+        ReadingsView(readingData: readingData, readings: .constant(Reading.data), reading: reading, chosenReading: reading, saveAction: {})
     }
 }

@@ -2,9 +2,11 @@ import Foundation
 import SwiftUI
 
 struct ArcanaView: View {
+    @ObservedObject var readingData: ReadingData
     @State var isCardViewPresented = false
     @Binding var cards: [Card]
     @State var arcanaCard: Card
+    @State var reading: Reading
     @Binding var gems: [Gem]
     @Binding var readings: [Reading]
     @Environment(\.presentationMode) var presentationMode
@@ -42,7 +44,7 @@ struct ArcanaView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ReadingsView(readings: $readings, saveAction: {})) {
+                    NavigationLink(destination: ReadingsView(readingData: readingData, readings: $readings, reading: reading, chosenReading: reading, saveAction: {})) {
                         Image(systemName: "book")
                     }
                 }
@@ -53,7 +55,9 @@ struct ArcanaView: View {
 }
 
 struct ArcanaView_Previews: PreviewProvider {
+    @State static var readingData = ReadingData()
+    @State static var reading = Reading.data[0]
     static var previews: some View {
-        ArcanaView(cards: .constant(Card.data), arcanaCard: Card.data[0], gems: .constant(Gem.data), readings: .constant(Reading.data))
+        ArcanaView(readingData: readingData, cards: .constant(Card.data), arcanaCard: Card.data[0], reading: reading, gems: .constant(Gem.data), readings: .constant(Reading.data))
     }
 }

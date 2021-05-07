@@ -12,11 +12,13 @@ struct MyGemTarotApp: App {
     @ObservedObject private var data = CardsObjectController()
     @ObservedObject private var gemData = GemData()
     @ObservedObject private var readingData = ReadingData()
+    @State private var reading = Reading.data[0]
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView(cards: $data.results, gems: $gemData.gems, readings: $readingData.readings)
-            }.onAppear() {
+                ContentView(readingData: readingData, reading: reading, cards: $data.results, gems: $gemData.gems, readings: $readingData.readings)
+            }
+            .onAppear {
                 data.getCards()
                 gemData.load()
                 readingData.load()
@@ -24,3 +26,5 @@ struct MyGemTarotApp: App {
         }
     }
 }
+
+
