@@ -11,7 +11,11 @@ import SwiftUI
 struct ReadingView: View {
     let reading: Reading
     @Environment(\.presentationMode) var presentationMode
-
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
 
     var body: some View {
         NavigationView {
@@ -21,7 +25,7 @@ struct ReadingView: View {
                 }
                 
                 Section(header: Text("Date")) {
-                    Text(reading.date)
+                    Text(reading.date, formatter: dateFormatter)
                 }
                 
                 Section(header: Text("Notes")) {

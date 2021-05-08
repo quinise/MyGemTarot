@@ -10,12 +10,15 @@ import SwiftUI
 struct AddView: View {
     @Binding var readingData: Reading.Data
     
+    
     var body: some View {
        NavigationView {
         VStack(spacing: 12) {
             TextField("Choose a title", text: $readingData.title)
                 .padding()
-            TextField("Choose a Date", text: $readingData.date)
+            DatePicker (selection: $readingData.date, in: ...Date(), displayedComponents: .date) {
+                Text("Select a date")
+            }
                 .padding()
 
             MultilineTextField(text: $readingData.notes)
@@ -76,34 +79,6 @@ struct MultilineTextField: UIViewRepresentable {
         func textViewDidBeginEditing(_ textView: UITextView) {
             textView.text = ""
             textView.textColor = .label
-        }
-    }
-}
-
-struct EntryField: View {
-    var label: String
-    var placeholder: String
-    var prompt: String
-    @Binding var field: String
-    var isSecure:Bool = false
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(label)
-                if isSecure {
-                    SecureField(placeholder, text: $field).autocapitalization(.none)
-                } else {
-                    
-                    TextField(placeholder, text: $field).autocapitalization(.none)
-                }
-            }
-            .padding(8)
-            .background(Color(UIColor.secondarySystemBackground))
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-            Text(prompt)
-                .fixedSize(horizontal: false, vertical: true)
-                .font(.caption)
         }
     }
 }

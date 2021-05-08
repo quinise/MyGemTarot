@@ -11,10 +11,10 @@ import SwiftUI
 struct Reading: Identifiable, Codable {
     let id: UUID
     var title: String
-    var date: String
+    var date: Date
     var notes: String
     
-    init(id: UUID = UUID(), title: String, date: String, notes: String) {
+    init(id: UUID = UUID(), title: String, date: Date, notes: String) {
         self.id = id
         self.title = title
         self.date = date
@@ -31,8 +31,16 @@ struct Reading: Identifiable, Codable {
         return notesTest.evaluate(with: notes)
     }
     
+    func isDateValid() -> Bool {
+        if date > Date() {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     var validate: Bool {
-        if !isTitleValid() || !isNotesValid() {
+        if !isTitleValid() || !isNotesValid() || !isDateValid() {
             return false
         }
         return true
@@ -43,9 +51,9 @@ struct Reading: Identifiable, Codable {
 extension Reading {
     static var data: [Reading] {
         [
-            Reading(title: "Love Life", date: "5/1/2021", notes: "I was upright this reading. The Lovers did not appear, but my past was cumbersome."),
-            Reading(title: "Work Life", date: "5/2/2021", notes: "I need to be more patient with myself and slow my pace down. Remember self-care!"),
-            Reading(title: "Destiny", date: "5/3/2021", notes: "No one knows the full story until the end...")
+            Reading(title: "Love Life", date: Date(), notes: "I was upright this reading. The Lovers did not appear, but my past was cumbersome."),
+            Reading(title: "Work Life", date: Date(), notes: "I need to be more patient with myself and slow my pace down. Remember self-care!"),
+            Reading(title: "Destiny", date: Date(), notes: "No one knows the full story until the end...")
         ]
     }
 }
@@ -53,7 +61,7 @@ extension Reading {
 extension Reading {
     struct Data {
         var title: String = ""
-        var date: String = ""
+        var date: Date = Date()
         var notes: String = ""
     }
     

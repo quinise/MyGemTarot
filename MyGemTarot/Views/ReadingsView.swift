@@ -52,6 +52,9 @@ struct ReadingsView: View {
                         addIsPresented = false
                     }, trailing: Button("Add") {
                         let newReading = Reading(title: newReadingData.title, date: newReadingData.date, notes: newReadingData.notes)
+                        readings.append(newReading)
+                        addIsPresented = false
+                        readingData.save()
                         if newReading.validate {
                             readings.append(newReading)
                             addIsPresented = false
