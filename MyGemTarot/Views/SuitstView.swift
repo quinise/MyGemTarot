@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SuitsView: View {
     @ObservedObject var readingData: ReadingData
     @State var isArcanaViewPresented = false
     @State var isCupsViewPresented = false
@@ -22,6 +22,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 12) {
+                ContentView()
                 Button("Major Arcana") {
                     isArcanaViewPresented = true
                 }
@@ -97,12 +98,12 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SuitsView_Previews: PreviewProvider {
     @State static var readingData = ReadingData()
     @State static var reading = Reading.data[0]
     static var previews: some View {
         NavigationView {
-            ContentView(readingData: readingData, reading: reading, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
+            SuitsView(readingData: readingData, reading: reading, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
         }
     }
 }

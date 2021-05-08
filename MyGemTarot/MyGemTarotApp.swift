@@ -16,7 +16,7 @@ struct MyGemTarotApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView(readingData: readingData, reading: reading, cards: $data.results, gems: $gemData.gems, readings: $readingData.readings)
+                SuitsView(readingData: readingData, reading: reading, cards: $data.results, gems: $gemData.gems, readings: $readingData.readings)
             }
             .onAppear {
                 data.getCards()
