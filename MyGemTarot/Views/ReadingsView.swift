@@ -9,18 +9,18 @@ import SwiftUI
 
 struct ReadingsView: View {
     @ObservedObject var readingData: ReadingData
-    @Environment(\.scenePhase) private var scenePhase
     @Binding var readings: [Reading]
     @State var reading: Reading
     @State var chosenReading: Reading
     @State var addIsPresented = false
     @State var isReadingViewPresented = false
     @State private var newReadingData = Reading.Data()
+    @Environment(\.scenePhase) private var scenePhase
     let saveAction: () -> Void
     
     var body: some View {
         List {
-            ForEach(readings[0..<(readings.count)]) { reading in
+            ForEach(readings) { reading in
                     Button(reading.title) {
                         chosenReading = reading
                         isReadingViewPresented = true
@@ -52,9 +52,6 @@ struct ReadingsView: View {
                         addIsPresented = false
                     }, trailing: Button("Add") {
                         let newReading = Reading(title: newReadingData.title, date: newReadingData.date, notes: newReadingData.notes)
-                        readings.append(newReading)
-                        addIsPresented = false
-                        readingData.save()
                         if newReading.validate {
                             readings.append(newReading)
                             addIsPresented = false

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     @Binding var gems: [Gem]
-    let card: Card
     @Environment(\.presentationMode) var presentationMode
+    let card: Card
 
     var body: some View {
         NavigationView {

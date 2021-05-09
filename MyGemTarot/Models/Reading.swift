@@ -45,7 +45,6 @@ struct Reading: Identifiable, Codable {
         }
         return true
     }
-    
 }
 
 extension Reading {

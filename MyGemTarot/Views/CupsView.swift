@@ -3,12 +3,12 @@ import SwiftUI
 
 struct CupsView: View {
     @ObservedObject var readingData: ReadingData
-    @State var isCardViewPresented = false
     @Binding var cards: [Card]
-    @State var cupsCard: Card
-    @State var reading: Reading
     @Binding var gems: [Gem]
     @Binding var readings: [Reading]
+    @State var isCardViewPresented = false
+    @State var cupsCard: Card
+    @State var reading: Reading
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -57,6 +57,6 @@ struct CupsView_Previews: PreviewProvider {
     @State static var readingData = ReadingData()
     @State static var reading = Reading.data[0]
     static var previews: some View {
-        CupsView(readingData: readingData, cards: .constant(Card.data), cupsCard: Card.data[0], reading: reading, gems: .constant(Gem.data), readings: .constant(Reading.data))
+        CupsView(readingData: readingData, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data), cupsCard: Card.data[0], reading: reading)
     }
 }

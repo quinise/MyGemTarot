@@ -11,6 +11,7 @@
 		881E7A942641DFFF0082EE79 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E7A932641DFFF0082EE79 /* Gem.swift */; };
 		881E7A962641E7F50082EE79 /* GemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E7A952641E7F50082EE79 /* GemData.swift */; };
 		882144CC26468BFE00A1123B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882144CB26468BFE00A1123B /* ContentView.swift */; };
+		885211FA264839F30063F059 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885211F9264839F30063F059 /* MultilineTextField.swift */; };
 		88A8AB81263C9FE900DC46E4 /* MyGemTarotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */; };
 		88A8AB83263C9FE900DC46E4 /* SuitstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB82263C9FE900DC46E4 /* SuitstView.swift */; };
 		88A8AB85263C9FEB00DC46E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88A8AB84263C9FEB00DC46E4 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		881E7A932641DFFF0082EE79 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
 		881E7A952641E7F50082EE79 /* GemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemData.swift; sourceTree = "<group>"; };
 		882144CB26468BFE00A1123B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		885211F9264839F30063F059 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		88A8AB7D263C9FE900DC46E4 /* MyGemTarot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGemTarot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGemTarotApp.swift; sourceTree = "<group>"; };
 		88A8AB82263C9FE900DC46E4 /* SuitstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitstView.swift; sourceTree = "<group>"; };
@@ -90,8 +92,8 @@
 				88A8AB8F263CA22E00DC46E4 /* ArcanaView.swift */,
 				88A8AB91263CA2BA00DC46E4 /* CupsView.swift */,
 				88D8B6552642FB14007773D2 /* EditView.swift */,
-				88D8B6532642EAC8007773D2 /* ReadingsView.swift */,
 				88F440402644E94100810F8C /* AddView.swift */,
+				88D8B6532642EAC8007773D2 /* ReadingsView.swift */,
 				88D8B6572642FB87007773D2 /* ReadingView.swift */,
 				88A8AB93263CA2C900DC46E4 /* CoinsView.swift */,
 				88A8AB95263CA2EF00DC46E4 /* SwordsView.swift */,
@@ -148,6 +150,7 @@
 				881E7A932641DFFF0082EE79 /* Gem.swift */,
 				881E7A952641E7F50082EE79 /* GemData.swift */,
 				88D8B65926430128007773D2 /* Reading.swift */,
+				885211F9264839F30063F059 /* MultilineTextField.swift */,
 				88D8B65B26430922007773D2 /* ReadingData.swift */,
 				88EF13712644487D00D1A554 /* AddViewModel.swift */,
 			);
@@ -287,6 +290,7 @@
 				88A8AB83263C9FE900DC46E4 /* SuitstView.swift in Sources */,
 				881E7A942641DFFF0082EE79 /* Gem.swift in Sources */,
 				88D8B65A26430128007773D2 /* Reading.swift in Sources */,
+				885211FA264839F30063F059 /* MultilineTextField.swift in Sources */,
 				88B0237F263CCEDB00EDE7D5 /* Card.swift in Sources */,
 				88B02382263CD10400EDE7D5 /* CardsObjectController.swift in Sources */,
 				88D8B6562642FB14007773D2 /* EditView.swift in Sources */,

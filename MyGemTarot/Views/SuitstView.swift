@@ -9,15 +9,15 @@ import SwiftUI
 
 struct SuitsView: View {
     @ObservedObject var readingData: ReadingData
+    @Binding public var cards: [Card]
+    @Binding public var gems: [Gem]
+    @Binding public var readings: [Reading]
     @State var isArcanaViewPresented = false
     @State var isCupsViewPresented = false
     @State var isCoinsViewPresented = false
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
     @State var reading: Reading
-    @Binding public var cards: [Card]
-    @Binding public var gems: [Gem]
-    @Binding public var readings: [Reading]
     
     var body: some View {
         NavigationView {
@@ -33,7 +33,8 @@ struct SuitsView: View {
                 .padding()
                 .fullScreenCover(isPresented: $isArcanaViewPresented) {
                     // provide type == "major" cards
-                    ArcanaView(readingData: readingData, cards: $cards, arcanaCard: cards[0], reading: reading, gems: $gems, readings: $readings)
+                    ArcanaView(readingData: readingData, cards: $cards, gems: $gems, readings: $readings, arcanaCard: cards[0], reading: reading)
+                    
                 }
                 
                 Button("Cups") {
@@ -45,7 +46,7 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isCupsViewPresented) {
-                    CupsView(readingData: readingData, cards: $cards, cupsCard: cards[1], reading: reading, gems: $gems, readings: $readings)
+                    CupsView(readingData: readingData, cards: $cards, gems: $gems, readings: $readings, cupsCard: cards[0], reading: reading)
                 }
                 
                 Button("Coins") {
@@ -103,7 +104,7 @@ struct SuitsView_Previews: PreviewProvider {
     @State static var reading = Reading.data[0]
     static var previews: some View {
         NavigationView {
-            SuitsView(readingData: readingData, reading: reading, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data))
+            SuitsView(readingData: readingData, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data), reading: reading)
         }
     }
 }

@@ -3,10 +3,10 @@ import SwiftUI
 
 struct WandsView: View {
     @ObservedObject var readingData: ReadingData
-    @State var isCardViewPresented = false
     @Binding var gems: [Gem]
     @Binding var readings: [Reading]
     @Binding var cards: [Card]
+    @State var isCardViewPresented = false
     @State var wandsCard: Card
     @State var reading: Reading
     @Environment(\.presentationMode) var presentationMode

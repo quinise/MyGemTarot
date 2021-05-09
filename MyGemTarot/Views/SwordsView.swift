@@ -3,10 +3,10 @@ import SwiftUI
 
 struct SwordsView: View {
     @ObservedObject var readingData: ReadingData
-    @State var isCardViewPresented = false
     @Binding var gems: [Gem]
     @Binding var cards: [Card]
     @Binding var readings: [Reading]
+    @State var isCardViewPresented = false
     @State var swordsCard: Card
     @State var reading: Reading
     @Environment(\.presentationMode) var presentationMode
