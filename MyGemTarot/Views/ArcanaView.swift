@@ -2,13 +2,10 @@ import Foundation
 import SwiftUI
 
 struct ArcanaView: View {
-//    @ObservedObject var readingData: ReadingData
     @Binding var cards: [Card]
     @Binding var gems: [Gem]
-//    @Binding var readings: [Reading]
     @State var isCardViewPresented = false
     @State var arcanaCard: Card
-//    @State var reading: ReadingCD
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -26,6 +23,7 @@ struct ArcanaView: View {
             }
             .padding()
             .navigationTitle("Major Arcana")
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -45,8 +43,6 @@ struct ArcanaView: View {
 }
 
 struct ArcanaView_Previews: PreviewProvider {
-//    @State static var readingData = ReadingData()
-//    @State static var reading = ReadingCD()
     static var previews: some View {
         ArcanaView(cards: .constant(Card.data), gems: .constant(Gem.data), arcanaCard: Card.data[0])
     }

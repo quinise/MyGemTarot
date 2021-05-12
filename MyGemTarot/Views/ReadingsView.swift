@@ -9,14 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ReadingsView: View {
-//    @ObservedObject var readingData: ReadingData
-//    @Binding var readings: [Reading]
-//    @State var reading: Reading
-//    @State var chosenReading: ReadingCD
     @State var addIsPresented = false
     @State var isReadingViewPresented = false
-//    @State private var newReadingData = Reading.Data()
-//    @State var readingObjectID = ReadingCD.objectID
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
 
@@ -41,34 +35,13 @@ struct ReadingsView: View {
             
         }
         .navigationTitle("Readings")
-        .navigationBarItems(trailing: Button(action: {
-            addIsPresented = true
-        }) {
-            Image(systemName: "plus")
-        })
-        .sheet(isPresented: $addIsPresented) {
-            NavigationView {
-                /*AddView()
-                    .navigationBarItems(leading: Button("Cancel") {
-                        addIsPresented = false
-                    }, trailing: Button("Add") {
-                        let newReading = Reading(title: newReadingData.title, date: newReadingData.date, notes: newReadingData.notes)
-                        if newReading.validate {
-                            readings.append(newReading)
-                            addIsPresented = false
-                            readingData.save()
-                        } else if !newReading.validate {
-                            let _:Reading? = nil
-                            return
-                        }
-                    })
-                }*/
-                AddView()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: AddView()) {
+                    Image(systemName: "plus")
+                }
             }
         }
-//        .onChange(of: scenePhase) { phase in
-//            if phase == .inactive { saveAction() }
-//        }
     }
     
     private func deleteItems(offsets: IndexSet) {

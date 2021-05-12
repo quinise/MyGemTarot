@@ -32,22 +32,18 @@ struct CardView: View {
             .padding()
             .navigationTitle(card.name)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                    }
-                    
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: ReadingsView(saveAction: {})) {
+                        Image(systemName: "book")
                     }
                 }
             }
         }
     }
 }
+}
 
 struct CardView_Previews: PreviewProvider {
-    // pass in card data
     static var card = Card.data[0]
     static var previews: some View {
         CardView(gems: .constant(Gem.data), card: card)

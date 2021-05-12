@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct AddView: View {
-//    @Binding var readingData: Reading.Data
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,18 +26,12 @@ struct AddView: View {
             }
                 .padding()
 
-            MultilineTextField(text: $notes)
-                .padding()
-                .border(Color.gray.opacity(0.5), width: 1)
-                .background(Color.white)
-                .cornerRadius(10)
+            TextEditor(text: $notes)
         }
         
        }
        .navigationTitle("New Reading")
-       .navigationBarItems(leading: Button("Cancel") {
-        self.presentationMode.wrappedValue.dismiss()
-       }, trailing: Button("Add") {
+       .navigationBarItems(trailing: Button("Add") {
         self.saveReading()
        })
     }

@@ -12,8 +12,6 @@ import CoreData
 struct ReadingView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-//    @State var readingObjectID = ReadingCD.objectID
-//    @State private var editReadingData = Reading.Data()
     @State private var isEditPresented = false
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -40,22 +38,20 @@ struct ReadingView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationBarItems(trailing: Button("Edit") {
-                isEditPresented = true
-                //data = reading.data
-            })
-            .navigationTitle(reading.title ?? "")
-                NavigationLink(destination: EditView(reading: reading)) {
-                    Text("\(reading.title ?? "")")
-                        .padding()
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: EditView(reading: reading)) {
+                        Text("Edit")
+                            .padding()
+                    }
                 }
             }
         }
     }
+}
 
 //struct ReadingView_Previews: PreviewProvider {
-//    static var readingObjectId = ReadingCD.init().objectID
-//    static var readingContext = ReadingCD.init().managedObjectContext
 //    static var previews: some View {
 //        ReadingView()
 //    }

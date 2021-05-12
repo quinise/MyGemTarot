@@ -46,9 +46,8 @@ struct EditView: View {
         })
        }
        .navigationTitle("Edit Reading")
-       .navigationBarItems(leading: Button("Cancel") {
-        self.presentationMode.wrappedValue.dismiss()
-       }, trailing: Button("Done") {
+       .navigationBarBackButtonHidden(true)
+       .navigationBarItems(trailing: Button("Done") {
         self.updateReading()
        })
     }

@@ -10,14 +10,11 @@ import SwiftUI
 struct SuitsView: View {
     @Binding public var cards: [Card]
     @Binding public var gems: [Gem]
-//    @Binding public var readings: [Reading]
-//    @ObservedObject var readingData: ReadingData
     @State var isArcanaViewPresented = false
     @State var isCupsViewPresented = false
     @State var isCoinsViewPresented = false
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
-//    @State var reading: ReadingCD
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {

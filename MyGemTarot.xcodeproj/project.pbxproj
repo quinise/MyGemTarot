@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		881E7A962641E7F50082EE79 /* GemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E7A952641E7F50082EE79 /* GemData.swift */; };
 		882144CC26468BFE00A1123B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882144CB26468BFE00A1123B /* ContentView.swift */; };
 		8828DC36264A405700D4FE2F /* ReadingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8828DC34264A405700D4FE2F /* ReadingModel.xcdatamodeld */; };
-		885211FA264839F30063F059 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885211F9264839F30063F059 /* MultilineTextField.swift */; };
 		88A8AB81263C9FE900DC46E4 /* MyGemTarotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */; };
 		88A8AB83263C9FE900DC46E4 /* SuitstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8AB82263C9FE900DC46E4 /* SuitstView.swift */; };
 		88A8AB85263C9FEB00DC46E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88A8AB84263C9FEB00DC46E4 /* Assets.xcassets */; };
@@ -28,8 +27,6 @@
 		88D8B6542642EAC8007773D2 /* ReadingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6532642EAC8007773D2 /* ReadingsView.swift */; };
 		88D8B6562642FB14007773D2 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6552642FB14007773D2 /* EditView.swift */; };
 		88D8B6582642FB87007773D2 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B6572642FB87007773D2 /* ReadingView.swift */; };
-		88D8B65A26430128007773D2 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B65926430128007773D2 /* Reading.swift */; };
-		88D8B65C26430922007773D2 /* ReadingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8B65B26430922007773D2 /* ReadingData.swift */; };
 		88EF13722644487D00D1A554 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EF13712644487D00D1A554 /* AddViewModel.swift */; };
 		88F440412644E94100810F8C /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F440402644E94100810F8C /* AddView.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +37,6 @@
 		881E7A952641E7F50082EE79 /* GemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemData.swift; sourceTree = "<group>"; };
 		882144CB26468BFE00A1123B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8828DC35264A405700D4FE2F /* ReadingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReadingModel.xcdatamodel; sourceTree = "<group>"; };
-		885211F9264839F30063F059 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		88A8AB7D263C9FE900DC46E4 /* MyGemTarot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGemTarot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A8AB80263C9FE900DC46E4 /* MyGemTarotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGemTarotApp.swift; sourceTree = "<group>"; };
 		88A8AB82263C9FE900DC46E4 /* SuitstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitstView.swift; sourceTree = "<group>"; };
@@ -58,8 +54,6 @@
 		88D8B6532642EAC8007773D2 /* ReadingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingsView.swift; sourceTree = "<group>"; };
 		88D8B6552642FB14007773D2 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		88D8B6572642FB87007773D2 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
-		88D8B65926430128007773D2 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
-		88D8B65B26430922007773D2 /* ReadingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingData.swift; sourceTree = "<group>"; };
 		88EF13712644487D00D1A554 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		88F440402644E94100810F8C /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,9 +134,6 @@
 				88B0237E263CCEDB00EDE7D5 /* Card.swift */,
 				881E7A932641DFFF0082EE79 /* Gem.swift */,
 				881E7A952641E7F50082EE79 /* GemData.swift */,
-				88D8B65926430128007773D2 /* Reading.swift */,
-				885211F9264839F30063F059 /* MultilineTextField.swift */,
-				88D8B65B26430922007773D2 /* ReadingData.swift */,
 				88EF13712644487D00D1A554 /* AddViewModel.swift */,
 			);
 			path = Models;
@@ -236,9 +227,7 @@
 				88A8AB83263C9FE900DC46E4 /* SuitstView.swift in Sources */,
 				881284E22649A54900BBEE0B /* PersistenceController.swift in Sources */,
 				881E7A942641DFFF0082EE79 /* Gem.swift in Sources */,
-				88D8B65A26430128007773D2 /* Reading.swift in Sources */,
 				8828DC36264A405700D4FE2F /* ReadingModel.xcdatamodeld in Sources */,
-				885211FA264839F30063F059 /* MultilineTextField.swift in Sources */,
 				88B0237F263CCEDB00EDE7D5 /* Card.swift in Sources */,
 				88B02382263CD10400EDE7D5 /* CardsObjectController.swift in Sources */,
 				88D8B6562642FB14007773D2 /* EditView.swift in Sources */,
@@ -251,7 +240,6 @@
 				88A8AB96263CA2EF00DC46E4 /* SwordsView.swift in Sources */,
 				88D8B6582642FB87007773D2 /* ReadingView.swift in Sources */,
 				881E7A962641E7F50082EE79 /* GemData.swift in Sources */,
-				88D8B65C26430922007773D2 /* ReadingData.swift in Sources */,
 				88A8AB94263CA2C900DC46E4 /* CoinsView.swift in Sources */,
 				88A8AB81263C9FE900DC46E4 /* MyGemTarotApp.swift in Sources */,
 				88A8AB9A263CA58000DC46E4 /* CardView.swift in Sources */,
