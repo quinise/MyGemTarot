@@ -32,6 +32,7 @@ class CardsObjectController : ObservableObject {
                             JSONDecoder().decode(Cards.self, from: data)
                         self.results.append(contentsOf: res.cards)
                         print("results ", self.results)
+                        print("results count: \(self.results.count)")
                     } catch {
                         print("Error: \(error)")
                         #if DEBUG

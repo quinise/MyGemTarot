@@ -6,38 +6,39 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ReadingsView: View {
-    @ObservedObject var readingData: ReadingData
-    @Binding var readings: [Reading]
-    @State var reading: Reading
-    @State var chosenReading: Reading
+//    @ObservedObject var readingData: ReadingData
+//    @Binding var readings: [Reading]
+//    @State var reading: Reading
+//    @State var chosenReading: ReadingCD
     @State var addIsPresented = false
     @State var isReadingViewPresented = false
-    @State private var newReadingData = Reading.Data()
+//    @State private var newReadingData = Reading.Data()
+//    @State var readingObjectID = ReadingCD.objectID
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
+
     @Environment(\.scenePhase) private var scenePhase
+    
     let saveAction: () -> Void
+    
+    @FetchRequest(entity: ReadingCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ReadingCD.date, ascending: false)])
+    
+    var readings: FetchedResults<ReadingCD>
     
     var body: some View {
         List {
-            ForEach(readings) { reading in
-                    Button(reading.title) {
-                        chosenReading = reading
-                        isReadingViewPresented = true
-                    }
-                    .background(Color(UIColor.systemTeal))
-                    .font(.system(size:32)) // prefered to title
-                    .foregroundColor(.white) // font color
-                    .cornerRadius(8)
-                    .padding()
-                    .fullScreenCover(isPresented: $isReadingViewPresented) {
-                        ReadingView(reading: chosenReading)
-                    }
+            ForEach(readings, id: \.id) { reading in
+                //You can force unwrap later once you add the validation code and know it's impossible to be nil
+                NavigationLink(destination: ReadingView(reading: reading)) {
+                    Text("\(reading.title ?? "")")
+                        .padding()
+                }
             }
-            .onDelete { indices in
-                readingData.readings.remove(atOffsets: indices)
-                // stop back from being envoked
-            }
+            .onDelete(perform: deleteItems)
+            
         }
         .navigationTitle("Readings")
         .navigationBarItems(trailing: Button(action: {
@@ -47,7 +48,7 @@ struct ReadingsView: View {
         })
         .sheet(isPresented: $addIsPresented) {
             NavigationView {
-                AddView(readingData: $newReadingData)
+                /*AddView()
                     .navigationBarItems(leading: Button("Cancel") {
                         addIsPresented = false
                     }, trailing: Button("Add") {
@@ -61,29 +62,37 @@ struct ReadingsView: View {
                             return
                         }
                     })
+                }*/
+                AddView()
+            }
+        }
+//        .onChange(of: scenePhase) { phase in
+//            if phase == .inactive { saveAction() }
+//        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            managedObjectContext.perform {
+                offsets.map { readings[$0] }.forEach(managedObjectContext.delete)
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    #if DEBUG
+                    fatalError()
+                    #endif
                 }
-        }
-        .onChange(of: scenePhase) { phase in
-            if phase == .inactive { saveAction() }
+            }
         }
     }
-    
-    private func binding(for reading: Reading) -> Binding<Reading> {
-        guard let readingIndex = readings.firstIndex(where: {
-            $0.id == reading.id }) else {fatalError("Can't find reading in array")}
-            return $readings[readingIndex]
-    }
-    
-    private func delete(at offsets: IndexSet) {
-        readings.remove(atOffsets: offsets)
-        }
     
 }
 
 struct ReadingsView_Previews: PreviewProvider {
-    @State static var readingData = ReadingData()
-    @State static var reading = Reading.data[0]
+//    @State static var readingData = ReadingData()
+//    @State static var reading = ReadingCD()
     static var previews: some View {
-        ReadingsView(readingData: readingData, readings: .constant(Reading.data), reading: reading, chosenReading: reading, saveAction: {})
+        ReadingsView(saveAction: {})
     }
 }

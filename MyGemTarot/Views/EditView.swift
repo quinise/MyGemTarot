@@ -13,35 +13,67 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EditView: View {
-    @Binding var readingData: Reading.Data
+    @State private var title = ""
+    @State private var date = Date()
+    @State private var notes = ""
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
+
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    
+    var reading: ReadingCD
 
     var body: some View {
        NavigationView {
         VStack(spacing: 12) {
             // Include placeholders of existing data in each field, validate each field
-            TextField("Choose a title", text: $readingData.title)
+            TextField(reading.title ?? "", text: $title)
                 .padding()
-            DatePicker (selection: $readingData.date, in: ...Date(), displayedComponents: .date) {
-                Text("Select a date")
-            }
+            Text(dateFormatter.string(from: reading.date! ) )
                 .padding()
-
-            MultilineTextField(text: $readingData.notes)
-                .padding()
-                .border(Color.gray.opacity(0.5), width: 1)
-                .background(Color.white)
-                .cornerRadius(10)
+            TextEditor(text: $notes)
         }
-        
+        .onAppear(perform: {
+            title = reading.title ?? ""
+            notes = reading.notes ?? ""
+        })
        }
        .navigationTitle("Edit Reading")
+       .navigationBarItems(leading: Button("Cancel") {
+        self.presentationMode.wrappedValue.dismiss()
+       }, trailing: Button("Done") {
+        self.updateReading()
+       })
     }
+    
+    private func updateReading() {
+        reading.title = title
+        reading.notes = notes
+
+        do {
+            try self.managedObjectContext.save()
+            //Always a good idea to dimiss after saving
+            self.presentationMode.wrappedValue.dismiss()
+        } catch {
+            print(error)
+            #if DEBUG
+            fatalError()
+            #endif
+        }
+    }
+    
 }
 
-struct EditView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView(readingData: .constant(Reading.data[0].data))
-    }
-}
+//struct EditView_Previews: PreviewProvider {
+////    @State static var reading = ReadingCD()
+//    static var previews: some View {
+//        EditView()
+//    }
+//}

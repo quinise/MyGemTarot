@@ -6,22 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct MyGemTarotApp: App {
-    @ObservedObject private var data = CardsObjectController()
+    @ObservedObject private var data = CardsObjectController.shared
     @ObservedObject private var gemData = GemData()
-    @ObservedObject private var readingData = ReadingData()
-    @State private var reading = Reading.data[0]
+//    @ObservedObject private var readingData = ReadingData()
+//    @State private var reading = Reading.data[0]
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                SuitsView(readingData: readingData, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data), reading: reading)
+                SuitsView(cards: $data.results, gems: .constant(Gem.data))
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .onAppear {
                 data.getCards()
                 gemData.load()
-                readingData.load()
+//                readingData.load()
             }
         }
     }

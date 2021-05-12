@@ -2,13 +2,13 @@ import Foundation
 import SwiftUI
 
 struct CupsView: View {
-    @ObservedObject var readingData: ReadingData
+//    @ObservedObject var readingData: ReadingData
     @Binding var cards: [Card]
     @Binding var gems: [Gem]
-    @Binding var readings: [Reading]
+//    @Binding var readings: [Reading]
     @State var isCardViewPresented = false
     @State var cupsCard: Card
-    @State var reading: Reading
+//    @State var reading: ReadingCD
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -44,7 +44,7 @@ struct CupsView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ReadingsView(readingData: readingData, readings: $readings, reading: reading, chosenReading: reading, saveAction: {})) {
+                    NavigationLink(destination: ReadingsView(saveAction: {})) {
                         Image(systemName: "book")
                     }
                 }
@@ -54,9 +54,9 @@ struct CupsView: View {
 }
 
 struct CupsView_Previews: PreviewProvider {
-    @State static var readingData = ReadingData()
-    @State static var reading = Reading.data[0]
+//    @State static var reading = ReadingCD()
+//    @State static var reading = Reading.data[0]
     static var previews: some View {
-        CupsView(readingData: readingData, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data), cupsCard: Card.data[0], reading: reading)
+        CupsView(cards: .constant(Card.data), gems: .constant(Gem.data), cupsCard: Card.data[0])
     }
 }

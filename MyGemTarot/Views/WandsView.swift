@@ -2,13 +2,13 @@ import Foundation
 import SwiftUI
 
 struct WandsView: View {
-    @ObservedObject var readingData: ReadingData
-    @Binding var gems: [Gem]
-    @Binding var readings: [Reading]
+//    @ObservedObject var readingData: ReadingData
     @Binding var cards: [Card]
+    @Binding var gems: [Gem]
+//    @Binding var readings: [Reading]
     @State var isCardViewPresented = false
     @State var wandsCard: Card
-    @State var reading: Reading
+//    @State var reading: ReadingCD
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -45,7 +45,7 @@ struct WandsView: View {
                         }
                         
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: ReadingsView(readingData: readingData, readings: $readings, reading: reading, chosenReading: reading, saveAction: {})) {
+                            NavigationLink(destination: ReadingsView(saveAction: {})) {
                                 Image(systemName: "book")
                             }
                         }
@@ -56,9 +56,10 @@ struct WandsView: View {
 }
 
 struct WandsView_Previews: PreviewProvider {
-    @State static var readingData = ReadingData()
-    @State static var reading = Reading.data[0]
+//    @State static var readingData = ReadingData()
+//    @State static var reading = Reading.data[0]
+//    @State static var reading = ReadingCD()
     static var previews: some View {
-        WandsView(readingData: readingData, gems: .constant(Gem.data), readings: .constant(Reading.data), cards: .constant(Card.data), wandsCard: Card.data[0], reading: reading)
+        WandsView(cards: .constant(Card.data), gems: .constant(Gem.data), wandsCard: Card.data[0])
     }
 }

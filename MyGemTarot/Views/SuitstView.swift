@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct SuitsView: View {
-    @ObservedObject var readingData: ReadingData
     @Binding public var cards: [Card]
     @Binding public var gems: [Gem]
-    @Binding public var readings: [Reading]
+//    @Binding public var readings: [Reading]
+//    @ObservedObject var readingData: ReadingData
     @State var isArcanaViewPresented = false
     @State var isCupsViewPresented = false
     @State var isCoinsViewPresented = false
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
-    @State var reading: Reading
+//    @State var reading: ReadingCD
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         NavigationView {
@@ -33,7 +34,7 @@ struct SuitsView: View {
                 .padding()
                 .fullScreenCover(isPresented: $isArcanaViewPresented) {
                     // provide type == "major" cards
-                    ArcanaView(readingData: readingData, cards: $cards, gems: $gems, readings: $readings, arcanaCard: cards[0], reading: reading)
+                    ArcanaView(cards: $cards, gems: $gems, arcanaCard: CardsObjectController.shared.results[0])
                     
                 }
                 
@@ -46,7 +47,7 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isCupsViewPresented) {
-                    CupsView(readingData: readingData, cards: $cards, gems: $gems, readings: $readings, cupsCard: cards[0], reading: reading)
+                    CupsView(cards: $cards, gems: $gems, cupsCard: cards[0])
                 }
                 
                 Button("Coins") {
@@ -58,7 +59,7 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isCoinsViewPresented) {
-                    CoinsView(readingData: readingData, gems: $gems, cards: $cards, readings: $readings, coinsCard: cards[1], reading: reading)
+                    CoinsView(cards: $cards, gems: $gems, coinsCard: CardsObjectController.shared.results[0])
                 }
                 
                 Button("Swords") {
@@ -70,7 +71,7 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isSwordsViewPresented) {
-                    SwordsView(readingData: readingData, gems: $gems, cards: $cards, readings: $readings, swordsCard: cards[0], reading: reading)
+                    SwordsView(cards: $cards, gems: $gems, swordsCard: CardsObjectController.shared.results[0])
                 }
                 
                 Button("Wands") {
@@ -83,14 +84,14 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isWandsViewPresented) {
-                    WandsView(readingData: readingData,gems: $gems, readings: $readings, cards: $cards, wandsCard: cards[1], reading: reading)
+                    WandsView(cards: $cards, gems: $gems, wandsCard: CardsObjectController.shared.results[0])
                 }
             }
             .padding()
             .navigationTitle("My Gem Tarot")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ReadingsView(readingData: readingData, readings: $readings, reading: reading, chosenReading: reading, saveAction: {})) {
+                    NavigationLink(destination: ReadingsView(saveAction: {})) {
                         Image(systemName: "book")
                     }
                 }
@@ -100,11 +101,10 @@ struct SuitsView: View {
 }
 
 struct SuitsView_Previews: PreviewProvider {
-    @State static var readingData = ReadingData()
-    @State static var reading = Reading.data[0]
+//    @State static var reading = ReadingCD()
     static var previews: some View {
         NavigationView {
-            SuitsView(readingData: readingData, cards: .constant(Card.data), gems: .constant(Gem.data), readings: .constant(Reading.data), reading: reading)
+            SuitsView(cards: .constant(Card.data), gems: .constant(Gem.data))
         }
     }
 }

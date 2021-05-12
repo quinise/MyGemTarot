@@ -7,43 +7,36 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct ReadingView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var reading: Reading
-    @State private var editReadingData = Reading.Data()
+    @Environment(\.managedObjectContext) var managedObjectContext
+//    @State var readingObjectID = ReadingCD.objectID
+//    @State private var editReadingData = Reading.Data()
     @State private var isEditPresented = false
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
     }()
-
+    let currentDate = Date()
+    var reading: ReadingCD
+    
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("Title")) {
-                    Text(reading.title)
+                    Text(reading.title ?? "")
                 }
                 
                 Section(header: Text("Date")) {
-                    Text(reading.date, formatter: dateFormatter)
+                    //substituting todays date
+                    Text(dateFormatter.string(from: reading.date ?? Date() ))
                 }
                 
                 Section(header: Text("Notes")) {
-                    Text(reading.notes)
-                }
-            }
-            .listStyle(InsetGroupedListStyle())
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                    }
-                    
-                    
+                    Text(reading.notes ?? "")
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -51,34 +44,19 @@ struct ReadingView: View {
                 isEditPresented = true
                 //data = reading.data
             })
-            .navigationTitle(reading.title)
-            .fullScreenCover(isPresented: $isEditPresented) {
-                NavigationView {
-                    EditView(readingData: $editReadingData)
-                        .navigationTitle(reading.title)
-                        .navigationBarItems(leading: Button("Cancel") {
-                            isEditPresented = false
-                        }, trailing: Button("Done") {
-                            // validate edited reading
-//                            if readingToEdit.validate {
-//                                isEditPresented = false
-//                                readingToEdit.save()
-//                            } else {
-//                                readingToEdit = readingInData
-//                                return
-//                            }
-                                isEditPresented = false
-
-                        })
+            .navigationTitle(reading.title ?? "")
+                NavigationLink(destination: EditView(reading: reading)) {
+                    Text("\(reading.title ?? "")")
+                        .padding()
                 }
             }
         }
     }
-}
 
-struct ReadingView_Previews: PreviewProvider {
-    static var reading = Reading.data[0]
-    static var previews: some View {
-        ReadingView(reading: reading)
-    }
-}
+//struct ReadingView_Previews: PreviewProvider {
+//    static var readingObjectId = ReadingCD.init().objectID
+//    static var readingContext = ReadingCD.init().managedObjectContext
+//    static var previews: some View {
+//        ReadingView()
+//    }
+//}
