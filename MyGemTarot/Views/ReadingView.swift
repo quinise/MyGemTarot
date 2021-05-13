@@ -38,6 +38,7 @@ struct ReadingView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
+            .navigationTitle("Edit Reading")
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

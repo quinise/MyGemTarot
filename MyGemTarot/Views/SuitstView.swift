@@ -81,7 +81,7 @@ struct SuitsView: View {
                 .cornerRadius(8)
                 .padding()
                 .fullScreenCover(isPresented: $isWandsViewPresented) {
-                    WandsView(cards: $cards, gems: $gems, wandsCard: CardsObjectController.shared.results[0])
+                        WandsView(cards: $cards, gems: $gems, wandsCard: CardsObjectController.shared.results[0])
                 }
             }
             .padding()
@@ -94,13 +94,13 @@ struct SuitsView: View {
                 }
             }
         }
-    }
+   }
 }
 
 struct SuitsView_Previews: PreviewProvider {
 //    @State static var reading = ReadingCD()
     static var previews: some View {
-        NavigationView {
+        Group {
             SuitsView(cards: .constant(Card.data), gems: .constant(Gem.data))
         }
     }

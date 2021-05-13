@@ -32,16 +32,13 @@ struct ReadingsView: View {
                 }
             }
             .onDelete(perform: deleteItems)
-            
         }
         .navigationTitle("Readings")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: AddView()) {
-                    Image(systemName: "plus")
-                }
+        .navigationBarItems(trailing:
+            NavigationLink(destination: AddView()) {
+                Image(systemName: "plus")
             }
-        }
+        )
     }
     
     private func deleteItems(offsets: IndexSet) {

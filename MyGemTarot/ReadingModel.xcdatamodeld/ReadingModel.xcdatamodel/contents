@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ReadingCD" representedClassName="ReadingCD" syncable="YES" codeGenerationType="class">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" minDateTimeInterval="-1609430400" maxDateTimeInterval="1526194800" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="notes" attributeType="String"/>
-        <attribute name="title" attributeType="String"/>
+        <attribute name="notes" attributeType="String" minValueString="1" maxValueString="500" regularExpressionString="."/>
+        <attribute name="title" attributeType="String" minValueString="1" maxValueString="20" regularExpressionString="[A-Za-z]+"/>
     </entity>
     <elements>
         <element name="ReadingCD" positionX="-63" positionY="-18" width="128" height="89"/>

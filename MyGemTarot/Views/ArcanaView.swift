@@ -39,6 +39,8 @@ struct ArcanaView: View {
                 }
             }
         }
+        .navigationTitle("Major Arcana")
+
     }
 }
 

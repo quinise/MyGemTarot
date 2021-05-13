@@ -19,6 +19,7 @@ struct EditView: View {
     @State private var title = ""
     @State private var date = Date()
     @State private var notes = ""
+    @State private var dataAlert = false
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
 
@@ -34,7 +35,7 @@ struct EditView: View {
        NavigationView {
         VStack(spacing: 12) {
             // Include placeholders of existing data in each field, validate each field
-            TextField(reading.title ?? "", text: $title)
+            TextField(reading.title ?? "title", text: $title)
                 .padding()
             Text(dateFormatter.string(from: reading.date! ) )
                 .padding()
@@ -44,6 +45,9 @@ struct EditView: View {
             title = reading.title ?? ""
             notes = reading.notes ?? ""
         })
+        .alert(isPresented: $dataAlert) {
+            Alert(title: Text("Invalid data"), message: Text("Reading must have a title (2 characters long, only letters), date (not in the future), and a note (1-500 characters long)"), dismissButton: .cancel())
+        }
        }
        .navigationTitle("Edit Reading")
        .navigationBarBackButtonHidden(true)
@@ -61,10 +65,12 @@ struct EditView: View {
             //Always a good idea to dimiss after saving
             self.presentationMode.wrappedValue.dismiss()
         } catch {
-            print(error)
-            #if DEBUG
-            fatalError()
-            #endif
+            self.managedObjectContext.rollback()
+            self.dataAlert.toggle()
+//            print(error)
+//            #if DEBUG
+//            fatalError()
+//            #endif
         }
     }
     
