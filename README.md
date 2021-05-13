@@ -16,4 +16,5 @@ I originated, mocked-up, and programmed a Swift 5.3 iOS application. I made an a
 # Meta
 Quinise Mayes – quinise.mayes@gmail.com
 Distributed under the MIT license. See [MIT License site](https://opensource.org/licenses/MIT) for more information.
+
 [App repository](https://github.com/quinise/MyGemTarot)
