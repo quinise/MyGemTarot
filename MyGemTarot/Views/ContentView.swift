@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Binding public var cards: [Card]
+    @Binding public var gems: [Gem]
     @State var animate = false
     @State var endSplash = false
-    
+    @Environment(\.managedObjectContext) var managedObjectContext
+
     var body: some View {
         ZStack {
+            SuitsView(cards: $cards, gems: .constant(Gem.data))
             ZStack {
                 Color("bg")
                 Image("AppIcon")
@@ -44,8 +48,8 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

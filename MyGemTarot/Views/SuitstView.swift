@@ -16,11 +16,10 @@ struct SuitsView: View {
     @State var isSwordsViewPresented = false
     @State var isWandsViewPresented = false
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 12) {
-                ContentView()
                 Button("Major Arcana") {
                     isArcanaViewPresented = true
                 }
