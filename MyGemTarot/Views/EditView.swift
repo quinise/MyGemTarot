@@ -16,9 +16,9 @@ import SwiftUI
 import CoreData
 
 struct EditView: View {
-    @State private var title = ""
-    @State private var date = Date()
-    @State private var notes = ""
+    @State private var titleString = ""
+//    @State private var dateObject = Date()
+    @State private var notesString = ""
     @State private var dataAlert = false
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
@@ -35,15 +35,15 @@ struct EditView: View {
        NavigationView {
         VStack(spacing: 12) {
             // Include placeholders of existing data in each field, validate each field
-            TextField(reading.title ?? "title", text: $title)
+            TextField(reading.title ?? "title", text: $titleString)
                 .padding()
             Text(dateFormatter.string(from: reading.date! ) )
                 .padding()
-            TextEditor(text: $notes)
+            TextEditor(text: $notesString)
         }
         .onAppear(perform: {
-            title = reading.title ?? ""
-            notes = reading.notes ?? ""
+            titleString = reading.title ?? ""
+            notesString = reading.notes ?? ""
         })
         .alert(isPresented: $dataAlert) {
             Alert(title: Text("Invalid data"), message: Text("Reading must have a title (2 characters long, only letters), date (not in the future), and a note (1-500 characters long)"), dismissButton: .cancel())
@@ -57,8 +57,8 @@ struct EditView: View {
     }
     
     private func updateReading() {
-        reading.title = title
-        reading.notes = notes
+        reading.title = titleString
+        reading.notes = notesString
 
         do {
             try self.managedObjectContext.save()

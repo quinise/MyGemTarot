@@ -3,8 +3,8 @@
     <entity name="ReadingCD" representedClassName="ReadingCD" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" minDateTimeInterval="-1609430400" maxDateTimeInterval="1526194800" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="notes" attributeType="String" minValueString="1" maxValueString="500" regularExpressionString="."/>
-        <attribute name="title" attributeType="String" minValueString="1" maxValueString="20" regularExpressionString="[A-Za-z]+"/>
+        <attribute name="notes" attributeType="String" minValueString="1" maxValueString="500" regularExpressionString="^[a-zA-Z0-9\s!@#\$%\^\&amp;*\)\(+=._-]+$"/>
+        <attribute name="title" attributeType="String" minValueString="1" maxValueString="20" regularExpressionString="^[a-zA-Z0-9\s]*$"/>
     </entity>
     <elements>
         <element name="ReadingCD" positionX="-63" positionY="-18" width="128" height="89"/>

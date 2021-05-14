@@ -12,21 +12,21 @@ struct AddView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @State private var dataAlert = false
-    @State private var title = ""
-    @State private var date = Date()
-    @State private var notes = ""
+    @State private var titleString = ""
+    @State private var dateObject = Date()
+    @State private var notesString = ""
     
     var body: some View {
         NavigationView {
             VStack(spacing: 12) {
-                TextField("Choose a title", text: $title)
+                TextField("Choose a title", text: $titleString)
                     .padding()
-                DatePicker (selection: $date, in: ...Date(), displayedComponents: .date) {
+                DatePicker (selection: $dateObject, in: ...Date(), displayedComponents: .date) {
                     Text("Select a date")
                 }
                 .padding()
                 
-                TextEditor(text: $notes)
+                TextEditor(text: $notesString)
             }.alert(isPresented: $dataAlert) {
                 Alert(title: Text("Invalid data"), message: Text("Reading must have a title (2 characters long, only letters), date (not in the future), and a note (1-500 characters long)"), dismissButton: .cancel())
             }
@@ -39,9 +39,9 @@ struct AddView: View {
     
     private func saveReading() {
         let newReading = ReadingCD(context: self.managedObjectContext)
-        newReading.title = title
-        newReading.date = date
-        newReading.notes = notes
+        newReading.title = titleString
+        newReading.date = dateObject
+        newReading.notes = notesString
         newReading.id = UUID()
         
         do {
