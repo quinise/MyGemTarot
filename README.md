@@ -15,10 +15,12 @@ It allows you to explore crystal- and gem-inspired tarot cards, cast spreads, an
 - Read detailed meanings associated with each gemstone or crystal.
 - Clean and intuitive iOS app experience.
 - Powered by the Tarot Card Meanings REST API for real-time card interpretations.
+
   
 ## 📋 Requirements
 - iOS 14+
 - Xcode 12 (for development / running in Simulator)
+
 
 ## 📦 Installation
 Clone this repo and open in Xcode:
@@ -29,11 +31,13 @@ open MyGemTarot.xcodeproj
 ```
 Run on Simulator or your iOS device.
 
+
 ## 🚀 Usage
 
 - Launch the app.
 - Tap Draw to pull a card or spread.
 - Review the gemstone/crystal associations and card meanings.
+
 
 ## 🛠 Development
 - Built with Swift / SwiftUI (or UIKit, depending on your implementation).
@@ -41,8 +45,10 @@ Run on Simulator or your iOS device.
 - Requires Xcode 12+.
 - Integrates with the [Tarot Card Meanings REST API](https://tarotapi.dev/)
 
+
 ## 📄 License
 Distributed under the [MIT License](https://opensource.org/licenses/MIT).
+
 
 ## 🙏 Credits & Attribution
 This project is inspired by the *Tarot of Gemstones and Crystals* deck, published by **U.S. Games Systems, Inc.**  
