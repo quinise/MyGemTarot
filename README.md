@@ -1,9 +1,8 @@
 # MyGemTarot
 
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
-[![iOS](https://img.shields.io/badge/iOS-14+-lightgrey?logo=apple)]()
-[![Xcode](https://img.shields.io/badge/Xcode-12-blue?logo=xcode)]()
-
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)  
+[![iOS](https://img.shields.io/badge/iOS-14+-lightgrey?logo=apple)](https://developer.apple.com/ios/)  
+[![Xcode](https://img.shields.io/badge/Xcode-12-blue?logo=xcode)](https://developer.apple.com/xcode/)
 
 MyGemTarot is a digital tarot reading app based on the Tarot of Gemstones and Crystals.
 
