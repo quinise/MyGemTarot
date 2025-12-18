@@ -8,7 +8,7 @@ MyGemTarot is a digital tarot reading app based on the Tarot of Gemstones and Cr
 
 It allows you to explore crystal- and gem-inspired tarot cards, cast spreads, and reflect on card meanings with a modern interface.
 
-## ✨ Features
+## Features
 - Browse and draw cards from the Tarot of Gemstones and Crystals deck.
 - Perform single-card draws.
 - Read detailed meanings associated with each gemstone or crystal.
@@ -16,12 +16,12 @@ It allows you to explore crystal- and gem-inspired tarot cards, cast spreads, an
 - Powered by the Tarot Card Meanings REST API for real-time card interpretations.
 
   
-## 📋 Requirements
+## Requirements
 - iOS 14+
 - Xcode 12 (for development / running in Simulator)
 
 
-## 📦 Installation
+## Installation
 Clone this repo and open in Xcode:
 ```bash
 git clone https://github.com/quinise/MyGemTarot.git
@@ -31,14 +31,14 @@ open MyGemTarot.xcodeproj
 Run on Simulator or your iOS device.
 
 
-## 🚀 Usage
+## Usage
 
 - Launch the app.
 - Tap Draw to pull a card or spread.
 - Review the gemstone/crystal associations and card meanings.
 
 
-## 🎥 Demo
+## Demo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ee173f2e-9981-4866-8039-82238ddae77a" width="320" alt="Select card demo" /></br>
   <em>Search for cards – Read traditional card interpretations & associated gem information</em>
@@ -50,18 +50,18 @@ Run on Simulator or your iOS device.
 </p>
 
 
-## 🛠 Development
+## Development
 - Built with Swift / SwiftUI (or UIKit, depending on your implementation).
 - Designed for iOS 14+.
 - Requires Xcode 12+.
 - Integrates with the [Tarot Card Meanings REST API](https://tarotapi.dev/)
 
 
-## 📄 License
+## License
 Distributed under the [MIT License](https://opensource.org/licenses/MIT).
 
 
-## 🙏 Credits & Attribution
+## Credits & Attribution
 This project is inspired by the *Tarot of Gemstones and Crystals* deck, published by **U.S. Games Systems, Inc.**  
 All rights to the original deck artwork and card meanings belong to their respective creators.
 
